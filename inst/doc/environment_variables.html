@@ -27,29 +27,31 @@ document.addEventListener('DOMContentLoaded', function(e) {
   }
 });
 </script>
-<script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
-// v0.0.1
-// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
 
-document.addEventListener('DOMContentLoaded', function() {
-  const codeList = document.getElementsByClassName("sourceCode");
-  for (var i = 0; i < codeList.length; i++) {
-    var linkList = codeList[i].getElementsByTagName('a');
-    for (var j = 0; j < linkList.length; j++) {
-      if (linkList[j].innerHTML === "") {
-        linkList[j].setAttribute('aria-hidden', 'true');
-      }
-    }
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
   }
-});
-</script>
-
-
-<style type="text/css">code{white-space: pre;}</style>
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -132,6 +134,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 })();
 </script>
+
 
 
 
@@ -331,21 +334,30 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 
 
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(lacrmr)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="co">#&gt; Loading required package: magrittr</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lacrmr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loading required package: magrittr</span></span></code></pre></div>
 <div id="why-using-lacrmr" class="section level1">
 <h1>Why using lacrmr?</h1>
-<p>lacrmr is a package that allows you to connect with your <a href="https://www.lessannoyingcrm.com/">Less Annoying CRM</a> account and obtain the data of your customers and contacts.</p>
+<p>lacrmr is a package that allows you to connect with your <a href="https://www.lessannoyingcrm.com/">Less Annoying CRM</a> account
+and obtain the data of your customers and contacts.</p>
 <div id="using-lacrmr" class="section level2">
 <h2>Using lacrmr:</h2>
-<p>The first step is to look for the credentials in order to connect to your lacrm. When you are logged into your account, go to <code>settings</code> &gt; <code>Programmer API</code></p>
-<p>Here you will need to create an API Token. When you go through this process you will obtain two pieces of information:</p>
+<p>The first step is to look for the credentials in order to connect to
+your lacrm. When you are logged into your account, go to
+<code>settings</code> &gt; <code>Programmer API</code></p>
+<p>Here you will need to create an API Token. When you go through this
+process you will obtain two pieces of information:</p>
 <ul>
 <li><strong>User code</strong></li>
 <li><strong>API token</strong></li>
 </ul>
-<p>Please make sure to save this credentials in a secure place. Otherwise anyone with this credential will be able to check your information through an API.</p>
-<p>Then if you go down on the page, you will see other pieces of information as <strong>User ID’S</strong>, <strong>Pipeline ID</strong> and <strong>Status ID</strong>. This info will be useful in order to make use of the functions in this package.</p>
+<p>Please make sure to save this credentials in a secure place.
+Otherwise anyone with this credential will be able to check your
+information through an API.</p>
+<p>Then if you go down on the page, you will see other pieces of
+information as <strong>User ID’S</strong>, <strong>Pipeline ID</strong>
+and <strong>Status ID</strong>. This info will be useful in order to
+make use of the functions in this package.</p>
 </div>
 </div>
 <div id="what-information-can-we-obtain-with-lacrmr" class="section level1">
@@ -359,7 +371,9 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 </ul>
 <div id="get_pipeline_report" class="section level2">
 <h2><strong><code>get_pipeline_report()</code></strong></h2>
-<p>This function returns the data from one specific pipeline that you create on your CRM. For this you will need to obtain the pipeline id that you want to work with from R.</p>
+<p>This function returns the data from one specific pipeline that you
+create on your CRM. For this you will need to obtain the pipeline id
+that you want to work with from R.</p>
 <p>The variables to obtain with this function are:</p>
 <pre><code> [1] &quot;result_contact_id&quot;                           
  [2] &quot;result_user_id&quot;                              
@@ -395,12 +409,18 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 </div>
 <div id="search_contacts" class="section level2">
 <h2><strong><code>search_contacts()</code></strong></h2>
-<p>This function will make you sure about if a contact id exists or not on your CRM records.</p>
-<p>If the contact id you provided to the function does indeed exists, you will see the message <code>The search item does exists in the CRM</code>. If not, the message will be <code>There is no such item in the CRM</code></p>
+<p>This function will make you sure about if a contact id exists or not
+on your CRM records.</p>
+<p>If the contact id you provided to the function does indeed exists,
+you will see the message
+<code>The search item does exists in the CRM</code>. If not, the message
+will be <code>There is no such item in the CRM</code></p>
 </div>
 <div id="get_contact_information" class="section level2">
 <h2><strong><code>get_contact_information()</code></strong></h2>
-<p>This function will allow you to return the contact information storage in your CRM. When you use this function with a specific contact id, you will see the next variables:</p>
+<p>This function will allow you to return the contact information
+storage in your CRM. When you use this function with a specific contact
+id, you will see the next variables:</p>
 <pre><code> [1] &quot;contact_contact_id&quot;            &quot;contact_user_id&quot;              
  [3] &quot;contact_company_id&quot;            &quot;contact_email&quot;                
  [5] &quot;contact_phone&quot;                 &quot;contact_text&quot;                 
@@ -416,7 +436,9 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 </div>
 <div id="get_account_information" class="section level2">
 <h2><strong><code>get_account_information()</code></strong></h2>
-<p>This function will simply show the information of your account or the account from which you entered the credentials to obtain the access to lacrm. The variables will be:</p>
+<p>This function will simply show the information of your account or the
+account from which you entered the credentials to obtain the access to
+lacrm. The variables will be:</p>
 <pre><code> [1] &quot;FirstName&quot;          &quot;LastName&quot;           &quot;Email&quot;             
  [4] &quot;UserId&quot;             &quot;AccountId&quot;          &quot;IsOwner&quot;           
  [7] &quot;IsAdmin&quot;            &quot;BlockExports&quot;       &quot;Timezone&quot;          
@@ -425,7 +447,9 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 </div>
 <div id="obtaining-credentials" class="section level1">
 <h1>Obtaining credentials:</h1>
-<p>In order to make the package works, you would need to create an .Renviron file inside your working directory that should contain environment variables as your api token, user code and pipelineID.</p>
+<p>In order to make the package works, you would need to create an
+.Renviron file inside your working directory that should contain
+environment variables as your api token, user code and pipelineID.</p>
 <p>All this information you will find it at lacrm.</p>
 </div>
 

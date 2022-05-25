@@ -1,6 +1,6 @@
 Package: lacrmr
 Title: Connect to the 'Less Annoying CRM' API
-Version: 1.0.3
+Version: 1.0.5
 Authors@R: c(
   person(given = "ixpantia, 
          family = SRL",
@@ -21,17 +21,16 @@ License: GPL-3
 URL: https://ixpantia.github.io/lacrmr/
 BugReports: https://github.com/ixpantia/lacrmr/issues
 Encoding: UTF-8
-LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.0
 Depends: R (>= 3.6), magrittr
 Suggests: testthat (>= 2.1.0), knitr, rmarkdown, httptest, mockery
 VignetteBuilder: knitr
 Imports: dplyr, httr, jsonlite, janitor, sjmisc, stringr
 NeedsCompilation: no
-Packaged: 2020-08-28 00:43:14 UTC; frans
+Packaged: 2022-05-25 00:23:47 UTC; frans
 Author: ixpantia, family = SRL [cph],
   Ronny Hernández Mora [aut] (<https://orcid.org/0000-0001-6225-7096>),
   Frans van Dunné [cre, aut] (<https://orcid.org/0000-0002-7853-2811>)
 Maintainer: Frans van Dunné <frans@ixpantia.com>
 Repository: CRAN
-Date/Publication: 2020-09-02 07:40:03 UTC
+Date/Publication: 2022-05-25 07:30:16 UTC
